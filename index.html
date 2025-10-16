@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>For You, My Love ❤️</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0f0b14;
+    --grad1:#ff6aa1;
+    --grad2:#ff9bd0;
+    --accent:#ffd7e8;
+    --text:#fff5fa;
+    --glass:rgba(255,255,255,.10);
+    --glass-brd:rgba(255,255,255,.18);
+    --glow:#ff5f9f;
+    --coffee-top:#5a3a2e; --coffee-mid:#3f271f; --coffee-deep:#2c1914;
+    --milk-top:#fff6f0; --milk-warm:#ffe7da;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0; color:var(--text); font-family:"Poppins",system-ui,Segoe UI,Roboto,Arial,sans-serif;
+    background:
+      radial-gradient(1200px 800px at 80% -10%, #2a1a33 0%, transparent 60%),
+      radial-gradient(900px 700px at -10% 90%, #1b0f22 0%, transparent 55%),
+      linear-gradient(180deg, #140e1a 0%, #0b0810 100%);
+    overflow-x:hidden; touch-action: manipulation;
+  }
+
+  /* Hearts background */
+  .scene{ position:fixed; inset:0; pointer-events:none; perspective:800px; filter:drop-shadow(0 6px 18px rgba(255,96,160,.2)); z-index:0 }
+  .heart{ position:absolute; width:26px; height:26px; transform: rotate(-45deg);
+    animation: float 10s infinite cubic-bezier(.5,.5,.5,.5); opacity:0;
+    background: radial-gradient(circle at 30% 30%, #fff6 0%, #fff0 35%), linear-gradient(145deg, var(--grad2), var(--grad1));
+    border-radius:6px; box-shadow: 0 0 18px rgba(255,105,180,.35), inset 0 0 10px rgba(255,255,255,.25);
+  }
+  .heart::before,.heart::after{ content:""; position:absolute; width:26px; height:26px; background:inherit; border-radius:50% }
+  .heart::before{ top:-13px; left:0 } .heart::after{ left:13px; top:0 }
+  @keyframes float{
+    0%{ opacity:0; transform:translate3d(var(--x,0),110vh,var(--z,0)) rotate(-45deg) }
+    8%{ opacity:1 } 25%{ transform:translate3d(calc(var(--x,0)+12vw),70vh,var(--z,0)) rotate(-45deg) rotateY(8deg) }
+    50%{ transform:translate3d(calc(var(--x,0)-8vw),35vh,var(--z,0)) rotate(-45deg) rotateY(-8deg) }
+    70%{ transform:translate3d(calc(var(--x,0)+6vw),10vh,var(--z,0)) rotate(-45deg) rotateY(6deg) }
+    100%{ opacity:0; transform:translate3d(calc(var(--x,0)+2vw),-20vh,var(--z,0)) rotate(-45deg) rotateY(-6deg) }
+  }
+  .scene .heart:nth-child(1){--x:5vw; animation-duration:11s; animation-delay:.2s}
+  .scene .heart:nth-child(2){--x:15vw; animation-duration:12s; animation-delay:.9s}
+  .scene .heart:nth-child(3){--x:25vw; animation-duration:10s; animation-delay:1.6s}
+  .scene .heart:nth-child(4){--x:35vw; animation-duration:13s; animation-delay:.4s}
+  .scene .heart:nth-child(5){--x:45vw; animation-duration:12s; animation-delay:1.1s}
+  .scene .heart:nth-child(6){--x:55vw; animation-duration:10.5s; animation-delay:.7s}
+  .scene .heart:nth-child(7){--x:65vw; animation-duration:11.5s; animation-delay:1.9s}
+  .scene .heart:nth-child(8){--x:75vw; animation-duration:12.5s; animation-delay:.3s}
+  .scene .heart:nth-child(9){--x:85vw; animation-duration:10.2s; animation-delay:1.3s}
+  .scene .heart:nth-child(10){--x:95vw; animation-duration:13.2s; animation-delay:.6s}
+
+  .wrap{ position:relative; z-index:2; max-width:980px; margin:5vh auto; padding:20px }
+  .card{
+    background: var(--glass); border:1px solid var(--glass-brd); border-radius:22px; padding:24px;
+    backdrop-filter: blur(14px) saturate(120%); -webkit-backdrop-filter: blur(14px) saturate(120%);
+    box-shadow: 0 12px 40px rgba(0,0,0,.35), 0 0 0 1px rgba(255,255,255,.06) inset;
+  }
+  h1{ margin:0 0 8px; font-size:clamp(26px,4vw,40px); background: linear-gradient(90deg, var(--accent), #ffffff); -webkit-background-clip:text; background-clip:text; color:transparent }
+  .subtitle{ margin:0 0 14px; opacity:.95 }
+
+  /* Apology */
+  .apology{ text-align:center; padding:10px 10px 0 }
+  .big-heart{ width:110px; height:110px; margin:10px auto 12px; transform: rotate(-45deg);
+    background: linear-gradient(135deg, var(--grad2), var(--grad1)); border-radius:22px; animation: heartbeat 1.3s infinite;
+    box-shadow: 0 12px 36px rgba(255,96,160,.35), 0 0 22px rgba(255,96,160,.45), inset 0 0 12px rgba(255,255,255,.25);
+  }
+  .big-heart::before,.big-heart::after{ content:""; position:absolute; width:110px; height:110px; background:inherit; border-radius:50% }
+  .big-heart::before{ top:-55px; left:0 } .big-heart::after{ left:55px; top:0 }
+  @keyframes heartbeat{
+    0%{ transform:scale(1) rotate(-45deg) } 20%{ transform:scale(1.18) rotate(-45deg) }
+    35%{ transform:scale(1) rotate(-45deg) } 55%{ transform:scale(1.12) rotate(-45deg) } 100%{ transform:scale(1) rotate(-45deg) }
+  }
+  .msg{ max-width:720px; margin:0 auto; line-height:1.7; font-size:clamp(15px,2.2vw,18px) }
+  .cta{ display:inline-block; margin-top:12px; padding:12px 22px; border-radius:999px; color:#1a0e16;
+    background: linear-gradient(90deg, #ffe3f1, #ffc7e3); text-decoration:none; font-weight:700; letter-spacing:.3px;
+    box-shadow: 0 10px 28px rgba(255,96,160,.25), 0 2px 0 rgba(255,255,255,.4) inset;
+  }
+
+  /* Game */
+  .game{ display:none; margin-top:18px }
+  .game.active{ display:grid; gap:16px; grid-template-columns:1.1fr 1fr }
+  .section-title{ margin:8px 0 10px; font-weight:600; opacity:.95 }
+  .tray, .cup-area{ background: rgba(255,255,255,.08); border:1px dashed rgba(255,255,255,.25); border-radius:16px; padding:14px; min-height:280px; }
+  .items{ display:flex; flex-wrap:wrap; gap:10px }
+  .draggable{
+    user-select:none; -webkit-user-drag:none; display:flex; align-items:center; gap:8px;
+    padding:10px 12px; border-radius:12px; cursor:grab; background: rgba(255,255,255,.14);
+    border:1px solid rgba(255,255,255,.25); box-shadow: 0 10px 28px rgba(0,0,0,.15), inset 0 0 12px rgba(255,255,255,.1);
+    transition: transform .12s ease; touch-action:none;
+  }
+  .draggable:active{ cursor:grabbing; transform:scale(.98) }
+  .pill{ width:18px; height:18px; border-radius:50% }
+  .pill.ice{ background: linear-gradient(180deg, #e9f6ff, #bfe2ff); border:1px solid #a6d4ff }
+  .pill.milk{ background: linear-gradient(180deg, #fff7fb, #ffdced); border:1px solid #ffd1e7 }
+  .pill.coffee{ background: linear-gradient(180deg, #7a4b3b, #4e2f25); border:1px solid #3f261f }
+  .pill.syrup{ background: linear-gradient(180deg, #ffd27a, #ffb347); border:1px solid #e59b32 }
+  .pill.whip{ background: linear-gradient(180deg, #ffffff, #f0eef5); border:1px solid #e1deea }
+
+  .dropzone{ outline:2px dashed transparent; outline-offset:-8px; transition:outline-color .15s ease }
+  .dropzone.active{ outline-color: rgba(255,255,255,.5) }
+
+  .cup-area .cup-stage{ height:320px; position:relative; display:flex; align-items:flex-end; justify-content:center;
+    background: rgba(255,255,255,.06); border-radius:12px; overflow:hidden; }
+
+  .cup{ position:relative; width:180px; height:260px; border-radius:16px 16px 40px 40px;
+    background: rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.3);
+    backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+    box-shadow: inset 0 0 30px rgba(255,255,255,.15), 0 8px 30px rgba(0,0,0,.25);
+  }
+  .cup::after{ content:""; position:absolute; left:14px; top:18px; width:12px; height:210px; border-radius:10px; background:linear-gradient(180deg, #ffffff40, #ffffff05) }
+  .fill{ position:absolute; left:12px; right:12px; bottom:14px; height:0; border-radius:12px; overflow:hidden; transition:height .5s ease }
+  .layer{ width:100%; height:0; transition: height .5s ease; position:relative; }
+  .layer-ice{
+    background:
+      linear-gradient(180deg, #ffffff50, #ffffff10),
+      repeating-linear-gradient(130deg, #eaf7ff88 0 6px, #cfe9ff55 6px 12px, #b8dcff44 12px 18px);
+    filter: saturate(110%);
+  }
+  .layer-milk{
+    background:
+      radial-gradient(60% 100% at 50% 0%, #ffffffaa 0%, #fff3eb66 40%, #ffdcca55 70%, #ffd3bd44 100%),
+      linear-gradient(180deg, var(--milk-top), var(--milk-warm));
+  }
+  .layer-coffee{
+    background:
+      radial-gradient(120% 140% at 50% -10%, #9a7b64 0%, #6a4a3a 18%, #4a3127 32%, transparent 33%),
+      linear-gradient(180deg, var(--coffee-top) 0%, var(--coffee-mid) 50%, var(--coffee-deep) 100%);
+  }
+  .foam{ position:absolute; left:0; right:0; top:-18px; height:28px; pointer-events:none;
+    background:
+      radial-gradient(circle at 12% 60%, #ffffffaa 0 5px, #ffffff22 6px 18px, transparent 20px),
+      radial-gradient(circle at 40% 40%, #ffffffaa 0 4px, #ffffff22 5px 14px, transparent 16px),
+      radial-gradient(circle at 70% 55%, #ffffffaa 0 6px, #ffffff22 7px 16px, transparent 18px),
+      linear-gradient(180deg, #ffffffbb, #ffffff22);
+    mask-image: linear-gradient(180deg, black 30%, transparent 100%);
+  }
+  .wave{ position:absolute; left:-200%; right:-200%; height:30px; top:-10px; opacity:.25;
+    background:
+      radial-gradient(50% 60% at 50% 50%, #ffffff 0 40%, transparent 42%),
+      radial-gradient(50% 60% at 0% 50%, #ffffff 0 40%, transparent 42%),
+      radial-gradient(50% 60% at 100% 50%, #ffffff 0 40%, transparent 42%);
+    background-repeat: repeat-x; background-size: 180px 30px, 180px 30px, 180px 30px;
+    animation: wave-move 6s linear infinite; mix-blend-mode: screen;
+  }
+  @keyframes wave-move{ to{ transform: translateX(200px) } }
+
+  .steps{ margin-top:10px; font-size:15px; opacity:.95 }
+  .badge{ display:inline-block; padding:6px 10px; border-radius:999px; background: rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.25); font-weight:600; margin-right:8px }
+
+  .success{ margin-top:12px; padding:14px; border-radius:12px; background: rgba(255,255,255,.12);
+    border:1px solid rgba(255,255,255,.25); display:none; text-align:center; }
+  .success .love{
+    font-size:clamp(18px,3.5vw,28px); margin-bottom:8px;
+    background: linear-gradient(90deg, #fff, #ffe4f2); -webkit-background-clip:text; background-clip:text; color:transparent;
+    text-shadow: 0 0 20px rgba(255,105,180,.35);
+  }
+
+  /* Confetti */
+  .confetti{ position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; overflow:hidden; z-index:3 }
+  .piece{
+    position:absolute; width:8px; height:14px; transform: translate(-50%,-50%);
+    background: hsl(var(--h), 90%, var(--l));
+    border-radius:2px; opacity:0; animation: burst var(--d) ease forwards;
+  }
+  @keyframes burst{
+    0%{ opacity:1; transform: translate(var(--x0), var(--y0)) rotate(0deg) }
+    100%{ opacity:0; transform: translate(var(--x1), var(--y1)) rotate(var(--r)) }
+  }
+
+  .actions{ margin-top:12px; display:flex; gap:10px; flex-wrap:wrap }
+  .ghost{ display:inline-block; padding:10px 16px; border-radius:999px; color:#ffe3f1; border:1px solid rgba(255,255,255,.35); text-decoration:none; background:transparent; }
+
+  /* Audio controls container */
+  .audio-wrap{ margin-top:10px; display:flex; align-items:center; gap:10px; justify-content:center }
+  .audio-wrap button{
+    padding:8px 14px; border-radius:999px; border:1px solid rgba(255,255,255,.35); background:rgba(255,255,255,.12); color:#fff; cursor:pointer;
+  }
+
+  @media (max-width:900px){ .game.active{ grid-template-columns:1fr } }
+</style>
+</head>
+<body>
+  <!-- Hearts -->
+  <div class="scene" aria-hidden="true">
+    <div class="heart"></div><div class="heart"></div><div class="heart"></div><div class="heart"></div><div class="heart"></div>
+    <div class="heart"></div><div class="heart"></div><div class="heart"></div><div class="heart"></div><div class="heart"></div>
+  </div>
+
+  <!-- Confetti layer -->
+  <div class="confetti" id="confetti" aria-hidden="true"></div>
+
+  <div class="wrap">
+    <div class="card">
+      <!-- Apology first -->
+      <section class="apology" id="apology">
+        <div class="big-heart" aria-hidden="true"></div>
+        <h1>I’m truly sorry, my love</h1>
+        <p class="subtitle">You’re doing great, and there’s unwavering support right here for you.</p>
+        <p class="msg">
+          Thank you for your patience and the strength you carry every day. You deserve gentleness and honesty, and that’s what will be given from now on. If you’re up for it, let’s make a sweet iced coffee together and celebrate your smile. 💗
+        </p>
+
+        <!-- Start also primes audio per browser autoplay policy -->
+        <a class="cta" href="#" id="startGameBtn">Start the iced coffee</a>
+
+        <!-- Soft music (royalty-free placeholder: replace src with your own MP3) -->
+        <div class="audio-wrap">
+          <audio id="bgAudio" preload="auto" loop controls></audio>
+          <button id="muteBtn" aria-pressed="true">Unmute music</button>
+        </div>
+      </section>
+
+      <!-- Game -->
+      <section class="game" id="game">
+        <h1>Hi babe, let’s make an iced coffee ☕️</h1>
+        <p class="subtitle">Drag ingredients into the cup in order: Ice → Milk → Espresso, then any toppings you want.</p>
+
+        <div class="actions">
+          <a class="ghost" href="#" id="backBtn">Back to message</a>
+          <a class="ghost" href="#" id="resetBtn">Reset cup</a>
+        </div>
+
+        <div class="steps">
+          <span class="badge">1</span>Ice first • <span class="badge">2</span>Milk next • <span class="badge">3</span>Espresso on top • <span class="badge">4</span>Toppings if you want
+        </div>
+
+        <div class="game active">
+          <section>
+            <div class="section-title">Ingredients</div>
+            <div class="tray dropzone" id="tray" aria-label="Ingredients tray">
+              <div class="items" id="items">
+                <div class="draggable" draggable="true" data-type="ice"><span class="pill ice"></span>Ice cubes</div>
+                <div class="draggable" draggable="true" data-type="milk"><span class="pill milk"></span>Milk</div>
+                <div class="draggable" draggable="true" data-type="coffee"><span class="pill coffee"></span>Espresso</div>
+                <div class="draggable" draggable="true" data-type="syrup"><span class="pill syrup"></span>Caramel syrup (optional)</div>
+                <div class="draggable" draggable="true" data-type="whip"><span class="pill whip"></span>Whipped cream (optional)</div>
+              </div>
+            </div>
+          </section>
+
+          <section>
+            <div class="section-title">Your Cup</div>
+            <div class="cup-area dropzone" id="cupZone" aria-label="Cup drop area">
+              <div class="cup-stage">
+                <div class="cup" id="cup">
+                  <div class="fill" id="fill">
+                    <div class="layer layer-ice" id="layer-ice"></div>
+                    <div class="layer layer-milk" id="layer-milk"></div>
+                    <div class="layer layer-coffee" id="layer-coffee">
+                      <div class="wave" id="coffee-wave"></div>
+                      <div class="foam" id="coffee-foam"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="success" id="success">
+              <div class="love">I LOVE YOU MY PRINCESS — YOU ARE MORE THAN GORGEOUS, AND I AM SO OBSESSED WITH YOU. 💖</div>
+              <div>Made with all my love. Always here, always yours.</div>
+            </div>
+          </section>
+        </div>
+      </section>
+    </div>
+  </div>
+
+<script>
+  // Sections and controls
+  const apology = document.getElementById('apology');
+  const game = document.getElementById('game');
+  const startGameBtn = document.getElementById('startGameBtn');
+  const backBtn = document.getElementById('backBtn');
+  const resetBtn = document.getElementById('resetBtn');
+
+  // Audio policy-friendly: start muted; unmute after user gesture
+  const bgAudio = document.getElementById('bgAudio');
+  const muteBtn = document.getElementById('muteBtn');
+  // Put your audio file here (royalty-free or your recording)
+  bgAudio.src = 'music.mp3'; // replace with your file path
+  bgAudio.volume = 0.7;
+  bgAudio.muted = true;
+
+  function ensurePlayback(){
+    // Call after a user click to satisfy autoplay rules
+    bgAudio.play().catch(()=>{}); // will play muted; user can unmute
+  }
+
+  startGameBtn.addEventListener('click', e=>{
+    e.preventDefault();
+    apology.style.display = 'none';
+    game.style.display = 'block';
+    window.scrollTo({top:0, behavior:'smooth'});
+    ensurePlayback(); // user gesture occurred
+  });
+
+  backBtn.addEventListener('click', e=>{
+    e.preventDefault();
+    game.style.display = 'none';
+    apology.style.display = 'block';
+    window.scrollTo({top:0, behavior:'smooth'});
+  });
+
+  muteBtn.addEventListener('click', ()=>{
+    bgAudio.muted = !bgAudio.muted;
+    muteBtn.textContent = bgAudio.muted ? 'Unmute music' : 'Mute music';
+    // If previously blocked, try play again after gesture
+    bgAudio.play().catch(()=>{});
+  });
+
+  // Drag & Drop
+  const tray = document.getElementById('tray');
+  const cupZone = document.getElementById('cupZone');
+  const itemsContainer = document.getElementById('items');
+  const success = document.getElementById('success');
+
+  const sequence = ['ice','milk','coffee'];
+  const extras = new Set(['syrup','whip']);
+  let progress = [];
+
+  const fill = document.getElementById('fill');
+  const layerIce = document.getElementById('layer-ice');
+  const layerMilk = document.getElementById('layer-milk');
+  const layerCoffee = document.getElementById('layer-coffee');
+  const coffeeWave = document.getElementById('coffee-wave');
+  const coffeeFoam = document.getElementById('coffee-foam');
+
+  function updateCup(){
+    const hasIce = progress.includes('ice');
+    const hasMilk = progress.includes('milk');
+    const hasCoffee = progress.includes('coffee');
+    let h = 0;
+    if(hasIce){ layerIce.style.height = '32%'; h += 32; } else layerIce.style.height = '0%';
+    if(hasMilk){ layerMilk.style.height = '26%'; h += 26; } else layerMilk.style.height = '0%';
+    if(hasCoffee){ layerCoffee.style.height = '28%'; h += 28; } else layerCoffee.style.height = '0%';
+    fill.style.height = h ? (h + 8) + '%' : '0%';
+    coffeeWave.style.display = hasCoffee ? 'block' : 'none';
+    coffeeFoam.style.display = hasCoffee ? 'block' : 'none';
+  }
+
+  function setZonesActive(active){ [tray, cupZone].forEach(z => z.classList.toggle('active', active)); }
+
+  function handleDragStart(e){
+    const t = e.target.closest('.draggable'); if(!t) return;
+    e.dataTransfer?.setData('text/plain', t.dataset.type);
+    e.dataTransfer?.setDragImage?.(t, 10, 10);
+  }
+  function handleDragOver(e){ e.preventDefault(); setZonesActive(true); }
+
+  function consumeItem(type){
+    const el = itemsContainer.querySelector(`.draggable[data-type="${type}"]`);
+    if(el){ el.setAttribute('draggable','false'); el.style.opacity=.5; el.style.cursor='default'; }
+  }
+
+  function handleDrop(e){
+    e.preventDefault(); setZonesActive(false);
+    const type = e.dataTransfer?.getData('text/plain');
+    if(!type) return;
+    if(sequence[progress.length] === type || (progress.length >= sequence.length && extras.has(type))){
+      if(!progress.includes(type)) progress.push(type);
+      consumeItem(type);
+      updateCup();
+      if(progress.length >= sequence.length){
+        showLoveMessage();
+      }
+    } else {
+      cupZone.animate([{transform:'scale(1)'},{transform:'scale(1.02)'},{transform:'scale(1)'}],{duration:250});
+    }
+  }
+  function handleDragEnd(){ setZonesActive(false); }
+
+  itemsContainer.addEventListener('dragstart', handleDragStart);
+  [tray, cupZone].forEach(z=>{ z.addEventListener('dragover', handleDragOver); z.addEventListener('drop', handleDrop); });
+  itemsContainer.addEventListener('dragend', handleDragEnd);
+
+  // Tap-to-add fallback for touch
+  itemsContainer.addEventListener('click', (e)=>{
+    const t = e.target.closest('.draggable');
+    if(!t || t.getAttribute('draggable')==='false') return;
+    const fakeEvent = { preventDefault(){}, dataTransfer:{ getData:()=>t.dataset.type } };
+    handleDrop(fakeEvent);
+  });
+
+  // Reset cup
+  resetBtn.addEventListener('click', (e)=>{
+    e.preventDefault();
+    progress = []; updateCup(); success.style.display = 'none';
+    itemsContainer.querySelectorAll('.draggable').forEach(d=>{ d.setAttribute('draggable','true'); d.style.opacity=1; d.style.cursor='grab'; });
+  });
+
+  // Celebration: message + confetti + pulse
+  const confettiRoot = document.getElementById('confetti');
+  function showLoveMessage(){
+    success.style.display = 'block';
+    success.scrollIntoView({behavior:'smooth', block:'nearest'});
+    // Light pulse on message
+    success.animate([{transform:'scale(1)'},{transform:'scale(1.02)'},{transform:'scale(1)'}],{duration:420});
+    // Confetti burst
+    burstConfetti(window.innerWidth/2, success.getBoundingClientRect().top + window.scrollY - 20);
+    // Try to start music if muted and user wants; leave control to her
+    bgAudio.play().catch(()=>{});
+  }
+
+  function burstConfetti(x, y){
+    const N = 120;
+    for(let i=0;i<N;i++){
+      const piece = document.createElement('div');
+      piece.className = 'piece';
+      const angle = (i/N) * Math.PI*2;
+      const distance = 140 + Math.random()*120;
+      const r = (Math.random()*360)|0;
+      const h = (Math.random()*360)|0;
+      const l = 50 + Math.random()*20;
+      piece.style.setProperty('--h', h);
+      piece.style.setProperty('--l', l+'%');
+      piece.style.setProperty('--x0', x+'px');
+      piece.style.setProperty('--y0', y+'px');
+      piece.style.setProperty('--x1', (x + Math.cos(angle)*distance)+'px');
+      piece.style.setProperty('--y1', (y + Math.sin(angle)*distance)+'px');
+      piece.style.setProperty('--r', r+'deg');
+      piece.style.setProperty('--d', (600 + Math.random()*700)+'ms');
+      confettiRoot.appendChild(piece);
+      setTimeout(()=>piece.remove(), 1800);
+    }
+  }
+
+  // Initialize visual state
+  updateCup();
+</script>
+</body>
+</html>
